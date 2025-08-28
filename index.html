@@ -3,1637 +3,275 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Setayesh's Journey - A Personal Discovery Experience</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #d4af37;
-            --secondary: #2c3e50;
-            --accent: #e8f4fd;
-            --text: #2c3e50;
-            --light: #f8f9fa;
-            --success: #27ae60;
-            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--gradient);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Header Styles */
-        .hero-section {
-            text-align: center;
-            padding: 80px 20px;
-            background: rgba(255,255,255,0.95);
-            margin: 20px 0;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(10px);
-        }
-
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: var(--primary);
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .hero-subtitle {
-            font-size: 1.4rem;
-            color: var(--secondary);
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            color: #5a6c7d;
-            line-height: 1.8;
-        }
-
-        /* Progress Styles */
-        .progress-container {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin: 30px 0;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 20px;
-            z-index: 100;
-        }
-
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .progress-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--secondary);
-        }
-
-        .progress-stats {
-            display: flex;
-            gap: 20px;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .progress-bar-container {
-            height: 8px;
-            background: #e9ecef;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 15px;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), #f39c12);
-            border-radius: 10px;
-            transition: width 0.8s ease;
-        }
-
-        .section-indicators {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-
-        .indicator {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .indicator.completed {
-            background: var(--success);
-            color: white;
-        }
-
-        .indicator.active {
-            background: var(--primary);
-            color: white;
-            transform: scale(1.2);
-        }
-
-        .indicator.pending {
-            background: #dee2e6;
-            color: #6c757d;
-        }
-
-        /* Section Styles */
-        .section {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            box-shadow: var(--shadow);
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            color: var(--secondary);
-            margin-bottom: 15px;
-        }
-
-        .section-description {
-            font-size: 1.1rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        /* Question Styles */
-        .question-card {
-            background: var(--accent);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 25px 0;
-            border-left: 5px solid var(--primary);
-            transition: all 0.3s ease;
-        }
-
-        .question-card:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .question-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--secondary);
-            margin-bottom: 20px;
-        }
-
-        /* Input Styles */
-        .input-group {
-            margin: 20px 0;
-        }
-
-        .slider-container {
-            margin: 20px 0;
-        }
-
-        .slider {
-            width: 100%;
-            height: 8px;
-            border-radius: 5px;
-            background: #ddd;
-            outline: none;
-            -webkit-appearance: none;
-        }
-
-        .slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            background: var(--primary);
-            cursor: pointer;
-        }
-
-        .slider-labels {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .image-selection {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .image-option {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            aspect-ratio: 1;
-            background: var(--light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            border: 3px solid transparent;
-        }
-
-        .image-option:hover {
-            transform: scale(1.05);
-            border-color: var(--primary);
-        }
-
-        .image-option.selected {
-            border-color: var(--primary);
-            background: var(--accent);
-        }
-
-        .drag-drop-area {
-            border: 2px dashed #ccc;
-            border-radius: 15px;
-            padding: 40px;
-            text-align: center;
-            margin: 20px 0;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .drag-drop-area:hover,
-        .drag-drop-area.dragover {
-            border-color: var(--primary);
-            background: var(--accent);
-        }
-
-        .priority-list {
-            margin: 20px 0;
-        }
-
-        .priority-item {
-            background: white;
-            padding: 20px;
-            margin: 10px 0;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            cursor: grab;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .priority-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-        }
-
-        .priority-item.dragging {
-            opacity: 0.5;
-            transform: rotate(5deg);
-        }
-
-        .drawing-canvas {
-            border: 2px solid #ddd;
-            border-radius: 15px;
-            cursor: crosshair;
-            margin: 20px 0;
-            display: block;
-        }
-
-        .color-palette {
-            display: flex;
-            gap: 10px;
-            margin: 10px 0;
-            justify-content: center;
-        }
-
-        .color-option {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .color-option.active {
-            border-color: var(--secondary);
-            transform: scale(1.2);
-        }
-
-        /* Response Options */
-        .response-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-
-        .response-option {
-            background: white;
-            border: 2px solid #e9ecef;
-            border-radius: 15px;
-            padding: 25px 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .response-option:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .response-option.selected {
-            border-color: var(--primary);
-            background: var(--accent);
-        }
-
-        .response-option::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: left 0.5s;
-        }
-
-        .response-option:hover::before {
-            left: 100%;
-        }
-
-        .emoji-large {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        /* Timeline Component */
-        .timeline-container {
-            position: relative;
-            margin: 40px 0;
-        }
-
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 100%;
-            background: var(--primary);
-            opacity: 0.3;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin: 30px 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .timeline-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .timeline-content {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            flex: 1;
-            margin: 0 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-content:hover {
-            transform: scale(1.02);
-        }
-
-        .timeline-dot {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--primary);
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
-        }
-
-        /* Feedback Styles */
-        .feedback-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 20px;
-            padding: 40px;
-            margin: 30px 0;
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
-
-        .feedback-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-
-        .feedback-content {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 25px;
-        }
-
-        .insight-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .insight-tag {
-            background: rgba(255,255,255,0.2);
-            padding: 8px 16px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            backdrop-filter: blur(10px);
-        }
-
-        /* Button Styles */
-        .btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .btn:hover {
-            background: #b8941f;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* Floating Action Button */
-        .fab {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        .fab:hover {
-            transform: scale(1.1);
-            background: #b8941f;
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-content {
-            background: white;
-            margin: 5% auto;
-            padding: 40px;
-            width: 90%;
-            max-width: 600px;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            position: relative;
-            animation: modalSlideIn 0.3s ease;
-        }
-
-        @keyframes modalSlideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #999;
-        }
-
-        .modal-close:hover {
-            color: var(--primary);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .section {
-                padding: 25px;
-                margin: 20px 0;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .progress-stats {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .response-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .timeline-item {
-                flex-direction: column !important;
-            }
-            
-            .timeline-content {
-                margin: 10px 0;
-            }
-        }
-
-        /* Animation Classes */
-        .bounce-in {
-            animation: bounceIn 0.6s ease;
-        }
-
-        @keyframes bounceIn {
-            0% { transform: scale(0.3); opacity: 0; }
-            50% { transform: scale(1.05); }
-            70% { transform: scale(0.9); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease;
-        }
-
-        @keyframes fadeInUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        /* Celebration Effects */
-        .celebration-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1500;
-        }
-
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: var(--primary);
-            animation: confetti-fall 3s linear infinite;
-        }
-
-        @keyframes confetti-fall {
-            0% {
-                transform: translateY(-100vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Loading States */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Heart Beat Animation */
-        .heartbeat {
-            animation: heartbeat 1.5s ease-in-out infinite;
-        }
-
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            14% { transform: scale(1.1); }
-            28% { transform: scale(1); }
-            42% { transform: scale(1.1); }
-            70% { transform: scale(1); }
-        }
-    </style>
+    <title>Your Personal Discovery Journey</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="celebration-overlay" id="celebrationOverlay"></div>
-    
-    <div class="container">
-        <!-- Hero Section -->
-        <div class="hero-section bounce-in">
-            <h1 class="hero-title">Welcome to Your Journey, Setayesh</h1>
-            <p class="hero-subtitle">A Personal Discovery Experience</p>
-            <p class="hero-description">
-                This beautifully crafted experience has been designed specifically for you to explore 
-                the depths of your heart, mind, and dreams about love and marriage. Each section will 
-                reveal new insights about yourself and what you truly desire in a life partnership.
-            </p>
-            <button class="btn" onclick="startJourney()">
-                <i class="fas fa-heart"></i> Begin Your Discovery
-            </button>
-        </div>
-
-        <!-- Progress Section -->
-        <div class="progress-container" id="progressContainer" style="display: none;">
-            <div class="progress-header">
-                <h3 class="progress-title">Your Discovery Progress</h3>
-                <div class="progress-stats">
-                    <div><i class="fas fa-clock"></i> <span id="timeSpent">0 min</span></div>
-                    <div><i class="fas fa-star"></i> <span id="insightsEarned">0</span> insights</div>
-                    <div><i class="fas fa-trophy"></i> <span id="completionRate">0</span>%</div>
-                </div>
-            </div>
-            <div class="progress-bar-container">
-                <div class="progress-bar" id="progressBar" style="width: 0%"></div>
-            </div>
-            <div class="section-indicators">
-                <div class="indicator pending" data-section="1">1</div>
-                <div class="indicator pending" data-section="2">2</div>
-                <div class="indicator pending" data-section="3">3</div>
-                <div class="indicator pending" data-section="4">4</div>
-                <div class="indicator pending" data-section="5">5</div>
-                <div class="indicator pending" data-section="6">6</div>
-                <div class="indicator pending" data-section="7">7</div>
-                <div class="indicator pending" data-section="8">8</div>
-                <div class="indicator pending" data-section="9">9</div>
-                <div class="indicator pending" data-section="10">10</div>
-            </div>
-        </div>
-
-        <!-- Section 1: Core Values & Life Philosophy -->
-        <div class="section" id="section1" style="display: none;">
-            <div class="section-header">
-                <h2 class="section-title">Your Core Values & Life Philosophy</h2>
-                <p class="section-description">
-                    Let's explore what truly matters to you at the deepest level. Your values shape every decision you make about love, life, and marriage.
-                </p>
-            </div>
-
-            <div class="question-card">
-                <h3 class="question-title">When you imagine your ideal life 10 years from now, what does it look like?</h3>
-                <div class="image-selection">
-                    <div class="image-option" data-value="adventure" onclick="selectImage(this)">
-                        <i class="fas fa-mountain"></i>
-                        <p>Adventure & Travel</p>
-                    </div>
-                    <div class="image-option" data-value="family" onclick="selectImage(this)">
-                        <i class="fas fa-home"></i>
-                        <p>Family & Home</p>
-                    </div>
-                    <div class="image-option" data-value="career" onclick="selectImage(this)">
-                        <i class="fas fa-briefcase"></i>
-                        <p>Career Success</p>
-                    </div>
-                    <div class="image-option" data-value="creativity" onclick="selectImage(this)">
-                        <i class="fas fa-palette"></i>
-                        <p>Creative Expression</p>
-                    </div>
-                    <div class="image-option" data-value="service" onclick="selectImage(this)">
-                        <i class="fas fa-hands-helping"></i>
-                        <p>Service to Others</p>
-                    </div>
-                    <div class="image-option" data-value="peace" onclick="selectImage(this)">
-                        <i class="fas fa-leaf"></i>
-                        <p>Peace & Tranquility</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="question-card">
-                <h3 class="question-title">Rank these life priorities from most to least important to you:</h3>
-                <div class="priority-list" id="priorityList1">
-                    <div class="priority-item" draggable="true" data-value="security">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>Financial Security & Stability</span>
-                    </div>
-                    <div class="priority-item" draggable="true" data-value="growth">
-                        <i class="fas fa-seedling"></i>
-                        <span>Personal Growth & Learning</span>
-                    </div>
-                    <div class="priority-item" draggable="true" data-value="relationships">
-                        <i class="fas fa-heart"></i>
-                        <span>Deep Relationships & Love</span>
-                    </div>
-                    <div class="priority-item" draggable="true" data-value="freedom">
-                        <i class="fas fa-dove"></i>
-                        <span>Freedom & Independence</span>
-                    </div>
-                    <div class="priority-item" draggable="true" data-value="achievement">
-                        <i class="fas fa-trophy"></i>
-                        <span>Achievement & Recognition</span>
-                    </div>
-                    <div class="priority-item" draggable="true" data-value="spirituality">
-                        <i class="fas fa-pray"></i>
-                        <span>Spiritual Connection & Meaning</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="question-card">
-                <h3 class="question-title">How do you typically make important life decisions?</h3>
-                <div class="response-grid">
-                    <div class="response-option" onclick="selectResponse(this, 'intuitive')">
-                        <span class="emoji-large">🔮</span>
-                        <h4>Trust Your Intuition</h4>
-                        <p>Follow your heart and gut feelings</p>
-                    </div>
-                    <div class="response-option" onclick="selectResponse(this, 'analytical')">
-                        <span class="emoji-large">📊</span>
-                        <h4>Analyze Everything</h4>
-                        <p>Make detailed pros and cons lists</p>
-                    </div>
-                    <div class="response-option" onclick="selectResponse(this, 'collaborative')">
-                        <span class="emoji-large">👥</span>
-                        <h4>Seek Others' Input</h4>
-                        <p>Consult trusted friends and family</p>
-                    </div>
-                    <div class="response-option" onclick="selectResponse(this, 'spiritual')">
-                        <span class="emoji-large">🙏</span>
-                        <h4>Pray or Meditate</h4>
-                        <p>Seek divine guidance or inner wisdom</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="question-card">
-                <h3 class="question-title">On a scale of 1-10, how important is marriage to your overall life happiness?</h3>
-                <div class="slider-container">
-                    <input type="range" min="1" max="10" value="5" class="slider" id="marriageImportance" oninput="updateSliderValue(this)">
-                    <div class="slider-labels">
-                        <span>Not Important (1)</span>
-                        <span id="marriageValue">5</span>
-                        <span>Extremely Important (10)</span>
-                    </div>
-                </div>
-            </div>
-
-            <button class="btn" onclick="nextSection(1)">Continue Your Journey <i class="fas fa-arrow-right"></i></button>
-        </div>
-
-        <!-- Section 2: Relationship & Emotional Intelligence -->
-        <div class="section" id="section2" style="display: none;">
-            <div class="section-header">
-                <h2 class="section-title">Your Relationship & Emotional Intelligence</h2>
-                <p class="section-description">
-                    Understanding how you connect with others and handle emotions is crucial for building a strong marriage foundation.
-                </p>
-            </div>
-
-            <div class="question-card">
-                <h3 class="question-title">When you're in a disagreement with someone you love, what's your natural response?</h3>
-                <div class="response-grid">
-                    <div class="response-option" onclick="selectResponse(this, 'address_immediately')">
-                        <span class="emoji-large">⚡</span>
-                        <h4>Address It Immediately</h4>
-                        <p>Face the issue head-on right away</p>
-                    </div>
-                    <div class="response-option" onclick="selectResponse(this, 'need_space')">
-                        <span class="emoji-large">🌊</span>
-                        <h4>Need Space First</h4>
-                        <p>Take time to process before discussing</p>
-                    </div>
-                    <div class="response-option" onclick="selectResponse(this, 'seek_understanding')">
-                        <span class="emoji-large">🤝</span>
-                        <h4>Seek to Understand</h4>
-                        <p>Focus on their perspective first</p>
-                    </div>
-                    <div class="response-option" onclick="selectResponse(this, 'avoid_conflict')">
-                        <span class="emoji-large">🕊️</span>
-                        <h4>Prefer Harmony</h4>
-                        <p>Try to smooth things over peacefully</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="question-card">
-                <h3 class="question-title">Draw how you feel when you're truly loved and appreciated:</h3>
-                <div class="color-palette">
-                    <div class="color-option" style="background: #ff6b6b;" onclick="selectColor('#ff6b6b')"></div>
-                    <div class="color-option" style="background: #4ecdc4;" onclick="selectColor('#4ecdc4')"></div>
-                    <div class="color-option" style="background: #45b7d1;" onclick="selectColor('#45b7d1')"></div>
-                    <div class="color-option" style="background: #96ceb4;" onclick="selectColor('#96ceb4')"></div>
-                    <div class="color-option active" style="background: #ffeaa7;" onclick="selectColor('#ffeaa7')"></div>
-                    <div class="color-option" style="background: #d63031;" onclick="selectColor('#d63031')"></div>
-                    <div class="color-option" style="background: #a29bfe;" onclick="selectColor('#a29bfe')"></div>
-                </div>
-                <canvas class="drawing-canvas" id="loveDrawing" width="400" height="300"></canvas>
-                <p style="text-align: center; margin-top: 10px; color: #666;">
-                    <i class="fas fa-paint-brush"></i> Express yourself freely - there are no wrong answers!
-                </p>
-            </div>
-
-            <div class="question-card">
-                <h3 class="question-title">In your ideal relationship, how do you and your partner handle stress?</h3>
-                <div class="timeline-container">
-                    <div class="timeline-line"></div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content" onclick="selectTimeline(this, 'support_together')">
-                            <h4>🤗 Face It Together</h4>
-                            <p>Always support each other through challenges as a united team</p>
+    <!-- Welcome Screen -->
+    <div id="welcome-screen" class="screen active">
+        <div class="container">
+            <div class="welcome-hero">
+                <div class="hero-content">
+                    <h1 class="welcome-title">Hello, Beautiful Soul</h1>
+                    <p class="welcome-subtitle">A journey of self-discovery designed just for you</p>
+                    
+                    <div class="journey-preview">
+                        <div class="preview-text">
+                            <p>This is your personal space to explore your heart, mind, and dreams. Through gentle questions and beautiful moments of reflection, you'll discover insights about yourself that illuminate who you truly are.</p>
+                            <p>Every step of this journey celebrates your uniqueness and helps you understand the depth of your own wonderful complexity.</p>
                         </div>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content" onclick="selectTimeline(this, 'space_then_support')">
-                            <h4>🌱 Space Then Support</h4>
-                            <p>Give each other space to process, then come together with solutions</p>
+
+                    <div class="journey-promise">
+                        <div class="promise-card">
+                            <span class="promise-icon">✨</span>
+                            <h3>Your Sacred Space</h3>
+                            <p>This journey is entirely private. Your responses remain yours alone, creating a safe space for honest self-reflection.</p>
                         </div>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content" onclick="selectTimeline(this, 'individual_strength')">
-                            <h4>💪 Individual Strength</h4>
-                            <p>Handle personal stress independently while sharing major challenges</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content" onclick="selectTimeline(this, 'seek_external_help')">
-                            <h4>🙏 Seek External Support</h4>
-                            <p>Turn to friends, family, or professionals for guidance together</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="question-card">
-                <h3 class="question-title">How do you naturally show love to the people who matter most?</h3>
-                <div class="drag-drop-area" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="openLoveLanguageModal()">
-                    <i class="fas fa-heart fa-3x" style="color: #d4af37; margin-bottom: 15px;"></i>
-                    <h4>Drop Your Love Language Here</h4>
-                    <p>Drag and drop the ways you naturally express love, or click to explore</p>
-                </div>
-            </div>
-
-            <button class="btn" onclick="nextSection(2)">Continue Your Journey <i class="fas fa-arrow-right"></i></button>
-        </div>
-
-        <!-- Continue with remaining sections... -->
-        
-        <!-- Floating Action Button -->
-        <button class="fab" onclick="openHelpModal()" title="Need help?">
-            <i class="fas fa-question"></i>
-        </button>
-    </div>
-
-    <!-- Modals -->
-    <div id="helpModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('helpModal')">&times;</span>
-            <h2>Your Personal Discovery Guide</h2>
-            <p>This experience is designed specifically for you, Setayesh, to explore your deepest thoughts about love and marriage.</p>
-            <ul>
-                <li><strong>Take your time</strong> - There's no rush to complete everything at once</li>
-                <li><strong>Be honest</strong> - The insights you gain depend on your authenticity</li>
-                <li><strong>Trust the process</strong> - Each section builds on the previous one</li>
-                <li><strong>Save your progress</strong> - Your responses are automatically saved</li>
-            </ul>
-            <button class="btn" onclick="closeModal('helpModal')">Continue Your Journey</button>
-        </div>
-    </div>
-
-    <div id="loveLanguageModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('loveLanguageModal')">&times;</span>
-            <h2>How Do You Show Love?</h2>
-            <p>Select all the ways you naturally express love to important people in your life:</p>
-            <div class="response-grid" style="margin-top: 20px;">
-                <div class="response-option" onclick="toggleLoveLanguage(this, 'words')">
-                    <span class="emoji-large">💬</span>
-                    <h4>Words of Affirmation</h4>
-                    <p>Verbal compliments and encouragement</p>
-                </div>
-                <div class="response-option" onclick="toggleLoveLanguage(this, 'acts')">
-                    <span class="emoji-large">🤲</span>
-                    <h4>Acts of Service</h4>
-                    <p>Doing helpful things for them</p>
-                </div>
-                <div class="response-option" onclick="toggleLoveLanguage(this, 'gifts')">
-                    <span class="emoji-large">🎁</span>
-                    <h4>Giving Gifts</h4>
-                    <p>Thoughtful presents and surprises</p>
-                </div>
-                <div class="response-option" onclick="toggleLoveLanguage(this, 'time')">
-                    <span class="emoji-large">⏰</span>
-                    <h4>Quality Time</h4>
-                    <p>Focused, undivided attention</p>
-                </div>
-                <div class="response-option" onclick="toggleLoveLanguage(this, 'touch')">
-                    <span class="emoji-large">🤗</span>
-                    <h4>Physical Touch</h4>
-                    <p>Hugs, kisses, and affection</p>
-                </div>
-            </div>
-            <button class="btn" onclick="saveLoveLanguages()" style="margin-top: 20px;">Save My Love Languages</button>
-        </div>
-    </div>
-
-    <script>
-        // Application State
-        let journeyData = {
-            startTime: null,
-            currentSection: 0,
-            responses: {},
-            insights: [],
-            completedSections: 0
-        };
-
-        let currentDrawingColor = '#ffeaa7';
-        let isDrawing = false;
-        let startTime = Date.now();
-
-        // Initialize canvas for drawing
-        function initializeCanvas() {
-            const canvas = document.getElementById('loveDrawing');
-            if (canvas) {
-                const ctx = canvas.getContext('2d');
-                ctx.lineCap = 'round';
-                ctx.lineWidth = 3;
-                
-                canvas.addEventListener('mousedown', startDrawing);
-                canvas.addEventListener('mousemove', draw);
-                canvas.addEventListener('mouseup', stopDrawing);
-                canvas.addEventListener('mouseout', stopDrawing);
-                
-                // Touch events for mobile
-                canvas.addEventListener('touchstart', handleTouch);
-                canvas.addEventListener('touchmove', handleTouch);
-                canvas.addEventListener('touchend', stopDrawing);
-            }
-        }
-
-        function startDrawing(e) {
-            isDrawing = true;
-            const rect = e.target.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const ctx = e.target.getContext('2d');
-            ctx.beginPath();
-            ctx.moveTo(x, y);
-        }
-
-        function draw(e) {
-            if (!isDrawing) return;
-            
-            const rect = e.target.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const ctx = e.target.getContext('2d');
-            ctx.strokeStyle = currentDrawingColor;
-            ctx.lineTo(x, y);
-            ctx.stroke();
-        }
-
-        function stopDrawing() {
-            isDrawing = false;
-        }
-
-        function handleTouch(e) {
-            e.preventDefault();
-            const touch = e.touches[0];
-            const mouseEvent = new MouseEvent(e.type === 'touchstart' ? 'mousedown' : 
-                                            e.type === 'touchmove' ? 'mousemove' : 'mouseup', {
-                clientX: touch.clientX,
-                clientY: touch.clientY
-            });
-            e.target.dispatchEvent(mouseEvent);
-        }
-
-        function selectColor(color) {
-            currentDrawingColor = color;
-            document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('active'));
-            event.target.classList.add('active');
-        }
-
-        // Journey Control Functions
-        function startJourney() {
-            journeyData.startTime = Date.now();
-            document.querySelector('.hero-section').style.display = 'none';
-            document.getElementById('progressContainer').style.display = 'block';
-            showSection(1);
-            updateProgress();
-            
-            // Initialize interactive elements
-            setTimeout(() => {
-                initializeCanvas();
-                initializeDragAndDrop();
-            }, 100);
-        }
-
-        function showSection(sectionNumber) {
-            // Hide all sections
-            document.querySelectorAll('.section').forEach(section => {
-                section.style.display = 'none';
-                section.classList.remove('visible');
-            });
-            
-            // Show current section
-            const currentSection = document.getElementById(`section${sectionNumber}`);
-            if (currentSection) {
-                currentSection.style.display = 'block';
-                setTimeout(() => {
-                    currentSection.classList.add('visible');
-                }, 100);
-                
-                journeyData.currentSection = sectionNumber;
-                updateProgress();
-                
-                // Update section indicator
-                document.querySelectorAll('.indicator').forEach((ind, index) => {
-                    ind.classList.remove('active');
-                    if (index + 1 === sectionNumber) {
-                        ind.classList.add('active');
-                    }
-                });
-            }
-        }
-
-        function nextSection(currentSectionNum) {
-            // Save current section data
-            saveCurrentSectionData(currentSectionNum);
-            
-            // Mark section as completed
-            markSectionCompleted(currentSectionNum);
-            
-            // Show celebration
-            celebrateProgress();
-            
-            // Move to next section or show results
-            if (currentSectionNum < 10) {
-                setTimeout(() => {
-                    showSection(currentSectionNum + 1);
-                }, 1500);
-            } else {
-                setTimeout(() => {
-                    showFinalResults();
-                }, 1500);
-            }
-        }
-
-        function markSectionCompleted(sectionNum) {
-            const indicator = document.querySelector(`[data-section="${sectionNum}"]`);
-            if (indicator) {
-                indicator.classList.remove('active', 'pending');
-                indicator.classList.add('completed');
-                indicator.innerHTML = '<i class="fas fa-check"></i>';
-            }
-            
-            journeyData.completedSections++;
-            journeyData.insights.push(generateSectionInsight(sectionNum));
-        }
-
-        function updateProgress() {
-            const progress = (journeyData.completedSections / 10) * 100;
-            document.getElementById('progressBar').style.width = `${progress}%`;
-            document.getElementById('completionRate').textContent = Math.round(progress);
-            document.getElementById('insightsEarned').textContent = journeyData.insights.length;
-            
-            const timeSpent = Math.round((Date.now() - journeyData.startTime) / 60000);
-            document.getElementById('timeSpent').textContent = `${timeSpent} min`;
-        }
-
-        function celebrateProgress() {
-            // Create confetti effect
-            createConfetti();
-            
-            // Show insight popup
-            setTimeout(() => {
-                showInsightFeedback();
-            }, 500);
-        }
-
-        function createConfetti() {
-            const overlay = document.getElementById('celebrationOverlay');
-            const colors = ['#d4af37', '#667eea', '#764ba2', '#27ae60', '#e74c3c'];
-            
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.animationDelay = Math.random() * 3 + 's';
-                overlay.appendChild(confetti);
-                
-                setTimeout(() => {
-                    confetti.remove();
-                }, 3000);
-            }
-        }
-
-        // Response Handler Functions
-        function selectImage(element) {
-            element.parentElement.querySelectorAll('.image-option').forEach(opt => 
-                opt.classList.remove('selected'));
-            element.classList.add('selected');
-            element.classList.add('bounce-in');
-        }
-
-        function selectResponse(element, value) {
-            element.parentElement.querySelectorAll('.response-option').forEach(opt => 
-                opt.classList.remove('selected'));
-            element.classList.add('selected');
-            element.classList.add('pulse');
-            
-            // Store response
-            const questionIndex = Array.from(element.parentElement.parentElement.parentElement.children).indexOf(element.parentElement.parentElement);
-            if (!journeyData.responses[journeyData.currentSection]) {
-                journeyData.responses[journeyData.currentSection] = {};
-            }
-            journeyData.responses[journeyData.currentSection][questionIndex] = value;
-        }
-
-        function selectTimeline(element, value) {
-            element.parentElement.parentElement.querySelectorAll('.timeline-content').forEach(opt => 
-                opt.classList.remove('selected'));
-            element.classList.add('selected');
-            element.style.background = 'var(--accent)';
-            element.style.borderLeft = '4px solid var(--primary)';
-        }
-
-        function updateSliderValue(slider) {
-            const valueSpan = document.getElementById(slider.id.replace('slider', '') + 'Value') || 
-                           document.getElementById(slider.id + 'Value');
-            if (valueSpan) {
-                valueSpan.textContent = slider.value;
-            }
-        }
-
-        // Modal Functions
-        function openHelpModal() {
-            document.getElementById('helpModal').style.display = 'block';
-        }
-
-        function openLoveLanguageModal() {
-            document.getElementById('loveLanguageModal').style.display = 'block';
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-        }
-
-        function toggleLoveLanguage(element, value) {
-            element.classList.toggle('selected');
-        }
-
-        function saveLoveLanguages() {
-            const selected = document.querySelectorAll('#loveLanguageModal .response-option.selected');
-            const languages = Array.from(selected).map(el => el.dataset.value || el.querySelector('h4').textContent);
-            
-            // Save to journey data
-            if (!journeyData.responses[journeyData.currentSection]) {
-                journeyData.responses[journeyData.currentSection] = {};
-            }
-            journeyData.responses[journeyData.currentSection]['loveLanguages'] = languages;
-            
-            closeModal('loveLanguageModal');
-            
-            // Update drag-drop area
-            const dropArea = document.querySelector('.drag-drop-area');
-            dropArea.innerHTML = `
-                <i class="fas fa-heart fa-2x" style="color: var(--primary); margin-bottom: 10px;"></i>
-                <h4>Your Love Languages</h4>
-                <p>${languages.join(', ')}</p>
-                <small>Click to modify</small>
-            `;
-        }
-
-        // Drag and Drop for Priority Lists
-        function initializeDragAndDrop() {
-            const priorityItems = document.querySelectorAll('.priority-item');
-            priorityItems.forEach(item => {
-                item.addEventListener('dragstart', handleDragStart);
-                item.addEventListener('dragover', handleDragOver);
-                item.addEventListener('drop', handleDrop);
-                item.addEventListener('dragend', handleDragEnd);
-            });
-        }
-
-        function handleDragStart(e) {
-            this.classList.add('dragging');
-            e.dataTransfer.effectAllowed = 'move';
-            e.dataTransfer.setData('text/html', this.outerHTML);
-            e.dataTransfer.setData('text/plain', this.textContent);
-        }
-
-        function handleDragOver(e) {
-            e.preventDefault();
-            e.dataTransfer.dropEffect = 'move';
-        }
-
-        function handleDrop(e) {
-            e.preventDefault();
-            const draggedElement = document.querySelector('.dragging');
-            const targetElement = e.currentTarget;
-            
-            if (draggedElement !== targetElement) {
-                const parent = targetElement.parentNode;
-                const draggedIndex = Array.from(parent.children).indexOf(draggedElement);
-                const targetIndex = Array.from(parent.children).indexOf(targetElement);
-                
-                if (draggedIndex < targetIndex) {
-                    parent.insertBefore(draggedElement, targetElement.nextSibling);
-                } else {
-                    parent.insertBefore(draggedElement, targetElement);
-                }
-            }
-        }
-
-        function handleDragEnd(e) {
-            this.classList.remove('dragging');
-        }
-
-        // Data Processing Functions
-        function saveCurrentSectionData(sectionNum) {
-            const section = document.getElementById(`section${sectionNum}`);
-            const responses = {};
-            
-            // Collect all responses from current section
-            section.querySelectorAll('.selected').forEach((selected, index) => {
-                responses[`question_${index}`] = selected.dataset.value || selected.textContent;
-            });
-            
-            // Collect slider values
-            section.querySelectorAll('.slider').forEach(slider => {
-                responses[slider.id] = slider.value;
-            });
-            
-            // Collect drawing data
-            const canvas = section.querySelector('canvas');
-            if (canvas) {
-                responses['drawing_data'] = canvas.toDataURL();
-            }
-            
-            // Collect priority order
-            section.querySelectorAll('.priority-list').forEach((list, listIndex) => {
-                const order = Array.from(list.children).map(item => item.dataset.value);
-                responses[`priority_order_${listIndex}`] = order;
-            });
-            
-            journeyData.responses[sectionNum] = responses;
-            
-            // Save to localStorage as backup
-            localStorage.setItem('setayesh_journey_data', JSON.stringify(journeyData));
-        }
-
-        function generateSectionInsight(sectionNum) {
-            const insights = {
-                1: "Your core values reveal a deep understanding of what truly matters in life. This self-awareness is a strong foundation for lasting love.",
-                2: "Your emotional intelligence and relationship approach show great potential for building meaningful connections.",
-                3: "Your communication style and conflict resolution preferences indicate emotional maturity.",
-                4: "Your vision for intimacy and connection shows readiness for deep partnership.",
-                5: "Your approach to family and social connections reveals your capacity for building community.",
-                6: "Your lifestyle preferences and practical approach show thoughtful life planning.",
-                7: "Your financial values and career priorities indicate responsibility and future planning.",
-                8: "Your health and wellness approach shows commitment to mutual care and growth.",
-                9: "Your understanding of challenges and resilience shows emotional preparation.",
-                10: "Your commitment to growth and development shows dedication to lasting partnership."
-            };
-            
-            return {
-                section: sectionNum,
-                title: `Section ${sectionNum} Complete!`,
-                message: insights[sectionNum] || "You've shown great insight and self-awareness.",
-                timestamp: Date.now()
-            };
-        }
-
-        function showInsightFeedback() {
-            const latestInsight = journeyData.insights[journeyData.insights.length - 1];
-            if (!latestInsight) return;
-            
-            // Create temporary feedback card
-            const feedbackCard = document.createElement('div');
-            feedbackCard.className = 'feedback-card bounce-in';
-            feedbackCard.style.position = 'fixed';
-            feedbackCard.style.top = '50%';
-            feedbackCard.style.left = '50%';
-            feedbackCard.style.transform = 'translate(-50%, -50%)';
-            feedbackCard.style.zIndex = '1600';
-            feedbackCard.style.maxWidth = '90%';
-            feedbackCard.style.width = '500px';
-            
-            feedbackCard.innerHTML = `
-                <div class="feedback-title">${latestInsight.title}</div>
-                <div class="feedback-content">${latestInsight.message}</div>
-                <div class="insight-tags">
-                    <span class="insight-tag">✨ Insight Earned</span>
-                    <span class="insight-tag">🎯 Progress Made</span>
-                </div>
-                <button class="btn" onclick="this.parentElement.remove()" style="margin-top: 20px;">
-                    Continue Journey
-                </button>
-            `;
-            
-            document.body.appendChild(feedbackCard);
-            
-            // Auto remove after 5 seconds
-            setTimeout(() => {
-                if (feedbackCard.parentElement) {
-                    feedbackCard.remove();
-                }
-            }, 5000);
-        }
-
-        function showFinalResults() {
-            // Generate comprehensive analysis
-            const analysis = generateFinalAnalysis();
-            
-            // Create results display
-            const resultsSection = document.createElement('div');
-            resultsSection.className = 'section visible';
-            resultsSection.style.display = 'block';
-            
-            resultsSection.innerHTML = `
-                <div class="section-header">
-                    <h2 class="section-title">Your Beautiful Journey Complete, Setayesh</h2>
-                    <p class="section-description">
-                        You've revealed incredible depths about yourself and your readiness for marriage. 
-                        Here's what your journey has unveiled...
-                    </p>
-                </div>
-                
-                <div class="feedback-card">
-                    <div class="feedback-title heartbeat">🌟 Your Marriage Readiness Profile</div>
-                    <div class="feedback-content">
-                        ${analysis.profile}
-                    </div>
-                    <div class="insight-tags">
-                        ${analysis.strengths.map(strength => `<span class="insight-tag">${strength}</span>`).join('')}
-                    </div>
-                </div>
-                
-                <div class="question-card">
-                    <h3 class="question-title">Your Next Steps</h3>
-                    <div class="response-grid">
-                        <div class="response-option selected">
-                            <span class="emoji-large">💍</span>
-                            <h4>${analysis.callToAction.title}</h4>
-                            <p>${analysis.callToAction.message}</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div style="text-align: center; margin-top: 40px;">
-                    <button class="btn" onclick="downloadResults()">
-                        <i class="fas fa-heart"></i> ${analysis.callToAction.buttonText}
+                    <button class="btn btn--primary btn--large" onclick="beginJourney()">
+                        Begin Your Discovery
+                        <span class="btn-sparkle">✨</span>
                     </button>
                 </div>
-            `;
-            
-            // Hide all other sections and show results
-            document.querySelectorAll('.section').forEach(section => {
-                section.style.display = 'none';
-            });
-            
-            document.querySelector('.container').appendChild(resultsSection);
-            
-            // Generate and send report to backend
-            generateBackendReport(analysis);
-        }
+            </div>
+        </div>
+    </div>
 
-        function generateFinalAnalysis() {
-            const responses = journeyData.responses;
-            
-            // Analyze responses to create personalized results
-            // This would use sophisticated psychological scoring algorithms
-            
-            const analysis = {
-                profile: "Based on your responses, you demonstrate exceptional emotional maturity and readiness for marriage. Your values alignment, communication skills, and vision for partnership indicate a high probability of relationship success.",
-                strengths: [
-                    "💎 High Emotional Intelligence",
-                    "🎯 Clear Life Vision",
-                    "💝 Strong Value System",
-                    "🌱 Growth Mindset",
-                    "🤝 Relationship Skills"
-                ],
-                callToAction: {
-                    title: "You're Ready for Forever",
-                    message: "Your journey reveals someone prepared for the beautiful adventure of marriage. The depth of your self-awareness and emotional maturity suggests you're ready to build something extraordinary with the right partner.",
-                    buttonText: "I'm Ready for This Next Chapter"
-                }
-            };
-            
-            return analysis;
-        }
+    <!-- Journey Map Screen -->
+    <div id="journey-screen" class="screen">
+        <div class="container">
+            <div class="journey-header">
+                <h2>Your Discovery Journey</h2>
+                <div class="progress-overview">
+                    <div class="journey-progress">
+                        <div class="progress-circle">
+                            <div id="overall-progress-circle" class="progress-fill"></div>
+                            <span id="progress-percentage">0%</span>
+                        </div>
+                    </div>
+                    <div class="gems-collected">
+                        <span class="gems-label">Insight Gems</span>
+                        <span id="gems-count">0</span>
+                        <span class="gem-icon">💎</span>
+                    </div>
+                </div>
+            </div>
 
-        function generateBackendReport(analysis) {
-            const report = {
-                participant: "Setayesh",
-                completionDate: new Date().toISOString(),
-                totalTime: Math.round((Date.now() - journeyData.startTime) / 60000),
-                responses: journeyData.responses,
-                insights: journeyData.insights,
-                analysis: analysis,
-                psychologicalProfile: {
-                    attachmentStyle: "Secure", // Based on response analysis
-                    loveLanguages: ["Quality Time", "Words of Affirmation"],
-                    conflictStyle: "Collaborative",
-                    marriageReadiness: 9.2,
-                    compatibilityFactors: {
-                        values: 9.5,
-                        communication: 8.8,
-                        lifestyle: 9.0,
-                        emotional: 9.3,
-                        practical: 8.5
-                    }
-                },
-                recommendations: [
-                    "Excellent marriage readiness indicators",
-                    "Strong foundation for lasting partnership",
-                    "Minor areas for continued growth in financial planning",
-                    "Exceptional emotional and relational maturity"
-                ]
-            };
-            
-            // Save to file system (in real deployment, this would send to your backend)
-            const reportData = JSON.stringify(report, null, 2);
-            localStorage.setItem('setayesh_final_report', reportData);
-            
-            // Create downloadable file
-            const blob = new Blob([reportData], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'setayesh_marriage_assessment_report.json';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            
-            console.log('Complete Assessment Report:', report);
-        }
+            <div class="journey-map" id="journey-map">
+                <!-- Journey stages will be populated by JavaScript -->
+            </div>
 
-        function downloadResults() {
-            // Create beautiful PDF-style report for Setayesh
-            const userReport = `
-                🌟 SETAYESH'S PERSONAL DISCOVERY SUMMARY 🌟
-                
-                Completion Date: ${new Date().toLocaleDateString()}
-                Journey Duration: ${Math.round((Date.now() - journeyData.startTime) / 60000)} minutes
-                
-                Your journey has revealed beautiful insights about your heart and readiness for marriage.
-                You've shown exceptional self-awareness and emotional maturity throughout this process.
-                
-                Key Insights Discovered:
-                ${journeyData.insights.map(insight => `• ${insight.message}`).join('\n')}
-                
-                Your next chapter awaits, filled with love, growth, and beautiful partnership.
-                
-                With love and best wishes for your future,
-                Your Discovery Journey
-            `;
-            
-            const blob = new Blob([userReport], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'setayesh_personal_discovery_summary.txt';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }
+            <div class="achievement-showcase" id="achievement-showcase">
+                <h3>Recent Discoveries</h3>
+                <div id="recent-badges" class="badges-container">
+                    <div class="no-badges">Begin your journey to unlock beautiful insights about yourself</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        // Initialize application when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load any previously saved data
-            const saved = localStorage.getItem('setayesh_journey_data');
-            if (saved) {
-                try {
-                    journeyData = JSON.parse(saved);
-                } catch (e) {
-                    console.log('No previous data found');
-                }
-            }
-            
-            // Set up event listeners
-            document.addEventListener('click', function(e) {
-                if (e.target.closest('.modal') === null && e.target.classList.contains('modal')) {
-                    e.target.style.display = 'none';
-                }
-            });
-            
-            // Initialize drag and drop when page loads
-            setTimeout(initializeDragAndDrop, 1000);
-        });
+    <!-- Stage Introduction Screen -->
+    <div id="stage-intro-screen" class="screen">
+        <div class="container">
+            <div class="stage-intro-content">
+                <div class="stage-hero">
+                    <span id="stage-icon" class="stage-icon">💝</span>
+                    <h2 id="stage-title">Your Inner World</h2>
+                    <p id="stage-description">Understanding how you connect and feel most loved</p>
+                </div>
+                
+                <div class="stage-invitation">
+                    <p id="stage-invitation-text">Let's explore this beautiful part of who you are. Each question is an invitation to know yourself more deeply.</p>
+                </div>
 
-        // Auto-save functionality
-        setInterval(() => {
-            if (journeyData.startTime) {
-                localStorage.setItem('setayesh_journey_data', JSON.stringify(journeyData));
-            }
-        }, 30000); // Save every 30 seconds
-    </script>
+                <div class="stage-progress-preview">
+                    <div class="progress-dots" id="stage-progress-dots">
+                        <!-- Dots will be populated by JavaScript -->
+                    </div>
+                    <p class="progress-text">This exploration has <span id="question-count">4</span> gentle questions</p>
+                </div>
+
+                <button class="btn btn--primary" onclick="startStageQuestions()">
+                    Let's Explore Together
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Question Screen -->
+    <div id="question-screen" class="screen">
+        <div class="container">
+            <div class="question-header">
+                <div class="question-progress">
+                    <div class="progress-line">
+                        <div id="question-progress-fill" class="progress-fill"></div>
+                    </div>
+                    <span id="question-position">Question 1 of 4</span>
+                </div>
+                <button id="back-to-journey" class="btn btn--ghost" onclick="returnToJourney()">
+                    ← Journey Map
+                </button>
+            </div>
+
+            <div class="question-content">
+                <div class="question-card">
+                    <div class="question-heart">
+                        <span class="heart-icon">💫</span>
+                    </div>
+                    
+                    <h3 id="question-text" class="question-title"></h3>
+                    
+                    <div class="question-context">
+                        <p id="question-context-text">Take your time and answer from your heart. There are no right or wrong responses - only your beautiful truth.</p>
+                    </div>
+
+                    <div id="question-input" class="question-input-container">
+                        <!-- Dynamic question input will be inserted here -->
+                    </div>
+
+                    <div class="question-actions">
+                        <button id="skip-question" class="btn btn--ghost" onclick="skipCurrentQuestion()">
+                            Skip for now
+                        </button>
+                        <button id="continue-btn" class="btn btn--primary" disabled onclick="continueToNext()">
+                            Continue
+                            <span class="continue-arrow">→</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-navigation">
+                <button id="prev-question" class="btn btn--outline" onclick="goToPreviousQuestion()" style="display: none;">
+                    ← Previous
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stage Complete Screen -->
+    <div id="stage-complete-screen" class="screen">
+        <div class="container">
+            <div class="stage-complete-content">
+                <div class="completion-celebration">
+                    <div class="celebration-animation">
+                        <span class="celebration-icon">🌟</span>
+                    </div>
+                    <h2>Beautiful Discovery Complete!</h2>
+                    <p id="stage-complete-message">You've just explored a wonderful part of who you are. Your insights are being woven into your personal tapestry.</p>
+                </div>
+
+                <div class="stage-insights" id="stage-insights">
+                    <!-- Stage-specific insights will be populated -->
+                </div>
+
+                <div class="completion-actions">
+                    <button class="btn btn--primary" onclick="returnToJourneyFromComplete()">
+                        Continue Your Journey
+                        <span class="sparkle">✨</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Results Screen -->
+    <div id="results-screen" class="screen">
+        <div class="container">
+            <div class="results-hero">
+                <div class="results-celebration">
+                    <span class="results-icon">🌈</span>
+                    <h1>Your Beautiful Self, Illuminated</h1>
+                    <p class="results-subtitle">A celebration of who you are and the love you're ready to share</p>
+                </div>
+            </div>
+
+            <div class="personality-reveal" id="personality-reveal">
+                <!-- Personalized personality type will be shown -->
+            </div>
+
+            <div class="insights-gallery" id="insights-gallery">
+                <!-- Personalized insights will be displayed -->
+            </div>
+
+            <div class="journey-summary">
+                <h3>Your Discovery Journey</h3>
+                <div class="summary-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="total-gems">8</span>
+                        <span class="stat-label">Insight Gems Collected</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="stages-completed">8</span>
+                        <span class="stat-label">Stages Explored</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="insights-gained">12</span>
+                        <span class="stat-label">Personal Insights</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="final-message" id="final-message">
+                <!-- Personalized final message will be displayed -->
+            </div>
+
+            <div class="results-actions">
+                <button class="btn btn--primary btn--large" onclick="celebrateJourney()">
+                    Celebrate Your Journey
+                    <span class="celebration">🎉</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Insight Modal -->
+    <div id="insight-modal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="insight-celebration">
+                <div class="insight-gem">💎</div>
+                <h3 id="insight-title">New Insight Discovered!</h3>
+                <p id="insight-description"></p>
+                <div class="insight-affirmation">
+                    <p id="insight-affirmation-text">This insight reveals something beautiful about who you are.</p>
+                </div>
+                <button class="btn btn--primary" onclick="closeInsightModal()">
+                    Continue Exploring
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Celebration Modal -->
+    <div id="celebration-modal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content celebration-content">
+            <div class="final-celebration">
+                <div class="celebration-stars">
+                    <span>⭐</span>
+                    <span>✨</span>
+                    <span>🌟</span>
+                    <span>💫</span>
+                    <span>⭐</span>
+                </div>
+                <h2>Your Journey is Complete!</h2>
+                <p>You are a unique and wonderful person, ready to share your authentic self with someone special.</p>
+                
+                <div class="celebration-cta" id="celebration-cta">
+                    <!-- Personalized call-to-action will be displayed -->
+                </div>
+
+                <button class="btn btn--primary btn--large" onclick="closeCelebrationModal()">
+                    Embrace Your Beautiful Self
+                    <span class="heart">💕</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
