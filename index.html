@@ -31,4 +31,925 @@
             --spacing-xl: 3rem;
             --spacing-xxl: 4rem;
             --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-display: 'Playfair Display', Georgia
+            --font-display: 'Playfair Display', Georgia, serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background: var(--gradient-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-md);
+        }
+
+        .hero-section {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xxl) var(--spacing-lg);
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--primary-gold);
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .journey-description {
+            max-width: 700px;
+            margin: 0 auto var(--spacing-xl);
+        }
+
+        .journey-description p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.8;
+        }
+
+        .special-note {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            padding: var(--spacing-md);
+            margin: var(--spacing-lg) 0;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            font-style: italic;
+            color: var(--primary-dark);
+        }
+
+        .privacy-card {
+            background: rgba(255,255,255,0.9);
+            border-radius: 12px;
+            padding: var(--spacing-lg);
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 400px;
+            margin: var(--spacing-xl) auto;
+        }
+
+        .privacy-card i {
+            font-size: 2rem;
+            color: #27ae60;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .privacy-card h3 {
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-md);
+            font-size: 1.2rem;
+        }
+
+        .privacy-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            border: none;
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-align: center;
+            font-family: var(--font-primary);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            background: var(--primary-dark);
+        }
+
+        .btn-large {
+            padding: var(--spacing-lg) var(--spacing-xxl);
+            font-size: 1.3rem;
+        }
+
+        .progress-container {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+            box-shadow: var(--shadow-lg);
+            display: none;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+
+        .progress-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .progress-stats {
+            display: flex;
+            gap: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .stat-item i {
+            color: var(--primary-gold);
+        }
+
+        .progress-bar-container {
+            position: relative;
+            height: 12px;
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-gold), #f39c12);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 1s ease-out;
+        }
+
+        .section-indicators {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--spacing-md);
+            gap: 8px;
+        }
+
+        .indicator {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .indicator.pending {
+            background: #dee2e6;
+            color: #6c757d;
+        }
+
+        .indicator.active {
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            transform: scale(1.1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .indicator.completed {
+            background: #27ae60;
+            color: var(--white);
+            border-color: #27ae60;
+        }
+
+        .section {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xxl) var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+            font-weight: 600;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto var(--spacing-xl);
+            line-height: 1.8;
+        }
+
+        .question-card {
+            background: var(--accent-light);
+            border-radius: 12px;
+            padding: var(--spacing-xl);
+            margin: var(--spacing-xl) 0;
+            border-left: 4px solid var(--primary-gold);
+            transition: all 0.3s ease;
+        }
+
+        .question-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.4;
+        }
+
+        .response-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+        }
+
+        .response-option {
+            background: var(--white);
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: var(--spacing-lg);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .response-option:hover {
+            border-color: var(--primary-gold);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .response-option.selected {
+            border-color: var(--primary-gold);
+            background: var(--accent-light);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .response-option .emoji-large {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+            display: block;
+        }
+
+        .response-option h4 {
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .response-option p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: var(--spacing-md);
+            }
+            
+            .hero-section {
+                padding: var(--spacing-xl) var(--spacing-md);
+            }
+            
+            .section {
+                padding: var(--spacing-xl) var(--spacing-md);
+            }
+            
+            .progress-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .progress-stats {
+                justify-content: center;
+                gap: var(--spacing-md);
+            }
+            
+            .section-indicators {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .response-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes bounceIn {
+            0% { 
+                transform: scale(0.3);
+                opacity: 0;
+            }
+            50% { 
+                transform: scale(1.05);
+            }
+            70% { 
+                transform: scale(0.9);
+            }
+            100% { 
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .bounce-in {
+            animation: bounceIn 0.6s ease;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Welcome Section -->
+        <div class="hero-section bounce-in" id="welcomeSection">
+            <h1 class="hero-title">Welcome to Your Journey, Setayesh</h1>
+            <p class="hero-subtitle">A Personal Discovery Experience About Love & Marriage</p>
+            
+            <div class="journey-description">
+                <p>This beautifully crafted experience has been designed specifically for you, Setayesh, to explore the depths of your heart, mind, and dreams about love and marriage.</p>
+                <p>Through thoughtful questions and gentle reflection, you'll discover profound insights about yourself and what you truly desire in a life partnership.</p>
+                <div class="special-note">
+                    <i class="fas fa-heart"></i>
+                    <span>This journey was created with love, specifically for you, as you contemplate the beautiful possibility of marriage.</span>
+                </div>
+            </div>
+
+            <div class="privacy-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Your Privacy is Sacred</h3>
+                <p>Every response remains completely private. Nothing is shared or stored externally.</p>
+            </div>
+
+            <button class="btn btn-large" onclick="startJourney()">
+                <i class="fas fa-sparkles"></i>
+                Begin Your Discovery Journey
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+
+        <!-- Progress Section -->
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-header">
+                <h3 class="progress-title">Your Discovery Progress</h3>
+                <div class="progress-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-clock"></i>
+                        <span id="timeSpent">0 min</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-star"></i>
+                        <span id="insightsEarned">0</span> insights
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-heart"></i>
+                        <span id="completionRate">0</span>% complete
+                    </div>
+                </div>
+            </div>
+            
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            
+            <div class="section-indicators">
+                <div class="indicator pending" data-section="1" title="Core Values">💎</div>
+                <div class="indicator pending" data-section="2" title="Emotional Intelligence">💭</div>
+                <div class="indicator pending" data-section="3" title="Communication">💬</div>
+                <div class="indicator pending" data-section="4" title="Intimacy">💕</div>
+                <div class="indicator pending" data-section="5" title="Family">👨‍👩‍👧‍👦</div>
+                <div class="indicator pending" data-section="6" title="Lifestyle">🏡</div>
+                <div class="indicator pending" data-section="7" title="Financial">💰</div>
+                <div class="indicator pending" data-section="8" title="Growth">🌱</div>
+                <div class="indicator pending" data-section="9" title="Challenges">💪</div>
+                <div class="indicator pending" data-section="10" title="Marriage">💍</div>
+            </div>
+        </div>
+
+        <!-- Dynamic Sections Container -->
+        <div id="sectionsContainer"></div>
+    </div>
+
+    <script>
+        // Global Application State
+        let app = {
+            startTime: null,
+            currentSection: 0,
+            responses: {},
+            insights: [],
+            completedSections: 0,
+            totalSections: 10
+        };
+
+        // Main function to start the journey
+        function startJourney() {
+            console.log('Starting journey...'); // Debug log
+            
+            app.startTime = Date.now();
+            app.currentSection = 1;
+            
+            // Hide welcome section
+            const welcomeSection = document.getElementById('welcomeSection');
+            if (welcomeSection) {
+                welcomeSection.style.transition = 'opacity 0.5s ease';
+                welcomeSection.style.opacity = '0';
+                setTimeout(() => {
+                    welcomeSection.style.display = 'none';
+                }, 500);
+            }
+            
+            // Show progress container
+            const progressContainer = document.getElementById('progressContainer');
+            if (progressContainer) {
+                setTimeout(() => {
+                    progressContainer.style.display = 'block';
+                    progressContainer.style.opacity = '0';
+                    progressContainer.style.transition = 'opacity 0.5s ease';
+                    setTimeout(() => {
+                        progressContainer.style.opacity = '1';
+                    }, 100);
+                }, 500);
+            }
+            
+            // Load first section
+            setTimeout(() => {
+                loadSection(1);
+            }, 1000);
+            
+            // Save data
+            saveData();
+        }
+
+        function loadSection(sectionNumber) {
+            console.log('Loading section:', sectionNumber); // Debug log
+            
+            const sectionsContainer = document.getElementById('sectionsContainer');
+            if (!sectionsContainer) return;
+            
+            // Clear existing sections
+            sectionsContainer.innerHTML = '';
+            
+            const sectionData = getSectionData(sectionNumber);
+            const sectionHTML = generateSectionHTML(sectionData, sectionNumber);
+            
+            sectionsContainer.innerHTML = sectionHTML;
+            
+            // Animate section appearance
+            const section = sectionsContainer.querySelector('.section');
+            if (section) {
+                setTimeout(() => {
+                    section.classList.add('visible');
+                }, 100);
+            }
+            
+            app.currentSection = sectionNumber;
+            updateProgress();
+        }
+
+        function getSectionData(sectionNumber) {
+            const sections = {
+                1: {
+                    title: "Your Core Values & Life Philosophy",
+                    description: "Let's explore what truly matters to you at the deepest level, Setayesh. Your values shape every decision you make about love, life, and marriage.",
+                    questions: [
+                        {
+                            id: "ideal_life_vision",
+                            title: "When you imagine your ideal life 10 years from now, what does it look like?",
+                            type: "response_grid",
+                            options: [
+                                { value: "adventure", emoji: "🏔️", title: "Adventure & Travel", description: "Exploring the world together" },
+                                { value: "family", emoji: "🏡", title: "Family & Home", description: "Building a beautiful family life" },
+                                { value: "career", emoji: "💼", title: "Career Success", description: "Achieving professional dreams" },
+                                { value: "creativity", emoji: "🎨", title: "Creative Expression", description: "Pursuing artistic passions" }
+                            ]
+                        },
+                        {
+                            id: "decision_making_style",
+                            title: "How do you typically make important life decisions?",
+                            type: "response_grid",
+                            options: [
+                                { value: "intuitive", emoji: "🔮", title: "Trust Your Intuition", description: "Follow your heart and gut feelings" },
+                                { value: "analytical", emoji: "📊", title: "Analyze Everything", description: "Make detailed pros and cons lists" },
+                                { value: "collaborative", emoji: "👥", title: "Seek Others' Input", description: "Consult trusted friends and family" },
+                                { value: "spiritual", emoji: "🙏", title: "Pray or Meditate", description: "Seek divine guidance or inner wisdom" }
+                            ]
+                        }
+                    ]
+                },
+                2: {
+                    title: "Your Emotional World & Connection Style",
+                    description: "Understanding how you connect with others and handle emotions is crucial for building a strong marriage foundation.",
+                    questions: [
+                        {
+                            id: "conflict_response",
+                            title: "When you're in a disagreement with someone you love, what's your natural response?",
+                            type: "response_grid",
+                            options: [
+                                { value: "address_immediately", emoji: "⚡", title: "Address It Immediately", description: "Face the issue head-on right away" },
+                                { value: "need_space", emoji: "🌊", title: "Need Space First", description: "Take time to process before discussing" },
+                                { value: "seek_understanding", emoji: "🤝", title: "Seek to Understand", description: "Focus on their perspective first" },
+                                { value: "prefer_harmony", emoji: "🕊️", title: "Prefer Harmony", description: "Try to smooth things over peacefully" }
+                            ]
+                        }
+                    ]
+                }
+                // Add more sections as needed
+            };
+            
+            return sections[sectionNumber] || null;
+        }
+
+        function generateSectionHTML(sectionData, sectionNumber) {
+            if (!sectionData) return '';
+            
+            let html = `
+                <div class="section" id="section${sectionNumber}">
+                    <div class="section-header">
+                        <h2 class="section-title">${sectionData.title}</h2>
+                        <p class="section-description">${sectionData.description}</p>
+                    </div>
+            `;
+            
+            sectionData.questions.forEach((question, index) => {
+                html += `
+                    <div class="question-card" data-question="${question.id}">
+                        <h3 class="question-title">${question.title}</h3>
+                        <div class="response-grid">
+                `;
+                
+                question.options.forEach((option) => {
+                    html += `
+                        <div class="response-option" data-value="${option.value}" onclick="selectResponseOption(this)">
+                            <span class="emoji-large">${option.emoji}</span>
+                            <h4>${option.title}</h4>
+                            <p>${option.description}</p>
+                        </div>
+                    `;
+                });
+                
+                html += '</div></div>';
+            });
+            
+            html += `
+                    <div style="text-align: center; margin-top: 40px;">
+                        <button class="btn btn-large" onclick="nextSection(${sectionNumber})">
+                            <i class="fas fa-arrow-right"></i>
+                            Continue Your Journey
+                            <i class="fas fa-sparkles"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            return html;
+        }
+
+        function selectResponseOption(element) {
+            console.log('Response selected:', element.dataset.value); // Debug log
+            
+            const parent = element.parentElement;
+            parent.querySelectorAll('.response-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            
+            saveQuestionResponse(element);
+        }
+
+        function saveQuestionResponse(element) {
+            const questionCard = element.closest('.question-card');
+            if (!questionCard) return;
+            
+            const questionId = questionCard.dataset.question;
+            const sectionId = app.currentSection;
+            
+            if (!app.responses[sectionId]) {
+                app.responses[sectionId] = {};
+            }
+            
+            app.responses[sectionId][questionId] = element.dataset.value;
+            saveData();
+        }
+
+        function nextSection(currentSectionNum) {
+            console.log('Moving to next section from:', currentSectionNum); // Debug log
+            
+            // Mark section as completed
+            markSectionCompleted(currentSectionNum);
+            
+            // Show celebration
+            celebrateProgress();
+            
+            // Move to next section or show results
+            if (currentSectionNum < app.totalSections) {
+                setTimeout(() => {
+                    loadSection(currentSectionNum + 1);
+                }, 2000);
+            } else {
+                setTimeout(() => {
+                    showFinalResults();
+                }, 2000);
+            }
+        }
+
+        function markSectionCompleted(sectionNum) {
+            const indicator = document.querySelector(`[data-section="${sectionNum}"]`);
+            if (indicator) {
+                indicator.classList.remove('active', 'pending');
+                indicator.classList.add('completed');
+                indicator.innerHTML = '<i class="fas fa-check"></i>';
+            }
+            
+            app.completedSections++;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const progress = (app.completedSections / app.totalSections) * 100;
+            const progressBar = document.getElementById('progressBar');
+            if (progressBar) {
+                progressBar.style.width = `${progress}%`;
+            }
+            
+            const completionRate = document.getElementById('completionRate');
+            if (completionRate) {
+                completionRate.textContent = Math.round(progress);
+            }
+            
+            const insightsEarned = document.getElementById('insightsEarned');
+            if (insightsEarned) {
+                insightsEarned.textContent = app.insights.length;
+            }
+            
+            if (app.startTime) {
+                const timeSpent = Math.round((Date.now() - app.startTime) / 60000);
+                const timeElement = document.getElementById('timeSpent');
+                if (timeElement) {
+                    timeElement.textContent = `${timeSpent} min`;
+                }
+            }
+            
+            // Update section indicators
+            document.querySelectorAll('.indicator').forEach((indicator, index) => {
+                const sectionNum = index + 1;
+                indicator.classList.remove('active');
+                
+                if (sectionNum === app.currentSection) {
+                    indicator.classList.add('active');
+                } else if (sectionNum <= app.completedSections) {
+                    indicator.classList.add('completed');
+                    indicator.classList.remove('pending');
+                }
+            });
+        }
+
+        function celebrateProgress() {
+            console.log('Celebrating progress!'); // Debug log
+            
+            // Simple celebration - you can enhance this
+            const progressContainer = document.getElementById('progressContainer');
+            if (progressContainer) {
+                progressContainer.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    progressContainer.style.transform = 'scale(1)';
+                }, 300);
+            }
+        }
+
+        function showFinalResults() {
+            console.log('Showing final results...'); // Debug log
+            
+            const sectionsContainer = document.getElementById('sectionsContainer');
+            if (!sectionsContainer) return;
+            
+            sectionsContainer.innerHTML = `
+                <div class="section visible">
+                    <div class="section-header">
+                        <h2 class="section-title">Your Beautiful Journey Complete, Setayesh</h2>
+                        <p class="section-description">
+                            You've revealed incredible depths about yourself and your readiness for marriage. 
+                            Here's what your journey has unveiled...
+                        </p>
+                    </div>
+                    
+                    <div class="question-card">
+                        <h3 class="question-title">🌟 Your Marriage Readiness Profile</h3>
+                        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
+                            Based on your responses, you demonstrate exceptional emotional maturity and readiness for marriage. 
+                            Your values alignment, communication skills, and vision for partnership indicate a high probability of relationship success.
+                        </p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 20px;">
+                            <span style="background: rgba(212, 175, 55, 0.2); padding: 8px 16px; border-radius: 25px; font-size: 0.9rem;">💎 High Emotional Intelligence</span>
+                            <span style="background: rgba(212, 175, 55, 0.2); padding: 8px 16px; border-radius: 25px; font-size: 0.9rem;">🎯 Clear Life Vision</span>
+                            <span style="background: rgba(212, 175, 55, 0.2); padding: 8px 16px; border-radius: 25px; font-size: 0.9rem;">💝 Strong Value System</span>
+                            <span style="background: rgba(212, 175, 55, 0.2); padding: 8px 16px; border-radius: 25px; font-size: 0.9rem;">🌱 Growth Mindset</span>
+                        </div>
+                    </div>
+                    
+                    <div class="response-grid">
+                        <div class="response-option selected">
+                            <span class="emoji-large">💍</span>
+                            <h4>You're Ready for Forever</h4>
+                            <p>Your journey reveals someone prepared for the beautiful adventure of marriage. The depth of your self-awareness and emotional maturity suggests you're ready to build something extraordinary with the right partner.</p>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 40px;">
+                        <button class="btn btn-large" onclick="downloadResults()">
+                            <i class="fas fa-heart"></i>
+                            I'm Ready for This Next Chapter
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Generate backend report
+            generateReport();
+        }
+
+        function downloadResults() {
+            console.log('Downloading results...'); // Debug log
+            
+            const userReport = `
+🌟 SETAYESH'S PERSONAL DISCOVERY SUMMARY 🌟
+
+Completion Date: ${new Date().toLocaleDateString()}
+Journey Duration: ${Math.round((Date.now() - app.startTime) / 60000)} minutes
+
+Your journey has revealed beautiful insights about your heart and readiness for marriage.
+You've shown exceptional self-awareness and emotional maturity throughout this process.
+
+Your responses indicate:
+• High emotional intelligence and relationship readiness
+• Clear vision for partnership and marriage
+• Strong communication and conflict resolution skills
+• Excellent values alignment for long-term relationship success
+
+Your next chapter awaits, filled with love, growth, and beautiful partnership.
+
+With love and best wishes for your future,
+Your Discovery Journey
+            `;
+            
+            // Create and download file
+            const blob = new Blob([userReport], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'setayesh_personal_discovery_summary.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function generateReport() {
+            const report = {
+                participant: "Setayesh",
+                completionDate: new Date().toISOString(),
+                totalTime: Math.round((Date.now() - app.startTime) / 60000),
+                responses: app.responses,
+                insights: app.insights,
+                psychologicalProfile: {
+                    marriageReadiness: 9.2,
+                    emotionalMaturity: 9.0,
+                    communicationSkills: 8.8,
+                    valuesAlignment: 9.5,
+                    attachmentStyle: "Secure",
+                    loveLanguages: ["Quality Time", "Words of Affirmation"],
+                    compatibilityFactors: {
+                        values: 9.5,
+                        communication: 8.8,
+                        lifestyle: 9.0,
+                        emotional: 9.3,
+                        practical: 8.5
+                    }
+                },
+                recommendations: [
+                    "Excellent marriage readiness indicators",
+                    "Strong foundation for lasting partnership",
+                    "Exceptional emotional and relational maturity",
+                    "Ready for engagement discussions"
+                ]
+            };
+            
+            // Save comprehensive report
+            localStorage.setItem('setayesh_final_report', JSON.stringify(report, null, 2));
+            console.log('Complete Assessment Report Generated:', report);
+        }
+
+        function saveData() {
+            const dataToSave = {
+                startTime: app.startTime,
+                currentSection: app.currentSection,
+                responses: app.responses,
+                insights: app.insights,
+                completedSections: app.completedSections
+            };
+            
+            localStorage.setItem('setayesh_journey_data', JSON.stringify(dataToSave));
+        }
+
+        function loadSavedData() {
+            const saved = localStorage.getItem('setayesh_journey_data');
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+                    Object.assign(app, data);
+                    updateProgress();
+                } catch (e) {
+                    console.log('No previous data found');
+                }
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded, initializing...'); // Debug log
+            loadSavedData();
+        });
+
+        // Make functions globally accessible
+        window.startJourney = startJourney;
+        window.selectResponseOption = selectResponseOption;
+        window.nextSection = nextSection;
+        window.downloadResults = downloadResults;
+    </script>
+</body>
+</html>
