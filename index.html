@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setayesh's Journey - A Personal Discovery Experience</title>
+    <meta name="description" content="A personalized journey of self-discovery about love and marriage">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💕</text></svg>">
+</head>
+<body>
+    <div class="celebration-overlay" id="celebrationOverlay"></div>
+    
+    <div class="container">
+        <!-- Welcome Section -->
+        <div class="hero-section bounce-in" id="welcomeSection">
+            <h1 class="hero-title">Welcome to Your Journey, Setayesh</h1>
+            <p class="hero-subtitle">A Personal Discovery Experience About Love & Marriage</p>
+            
+            <div class="journey-description">
+                <p>This beautifully crafted experience has been designed specifically for you, Setayesh, to explore the depths of your heart, mind, and dreams about love and marriage.</p>
+                <p>Through thoughtful questions and gentle reflection, you'll discover profound insights about yourself and what you truly desire in a life partnership.</p>
+                <div class="special-note">
+                    <i class="fas fa-heart"></i>
+                    <span>This journey was created with love, specifically for you, as you contemplate the beautiful possibility of marriage.</span>
+                </div>
+            </div>
+
+            <div class="privacy-assurance">
+                <div class="privacy-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Your Privacy is Sacred</h3>
+                    <p>Every response remains completely private. Nothing is shared or stored externally.</p>
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-large" onclick="startJourney()">
+                <i class="fas fa-sparkles"></i>
+                Begin Your Discovery Journey
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+
+        <!-- Progress Section -->
+        <div class="progress-container" id="progressContainer" style="display: none;">
+            <div class="progress-header">
+                <h3 class="progress-title">Your Discovery Progress</h3>
+                <div class="progress-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-clock"></i>
+                        <span id="timeSpent">0 min</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-star"></i>
+                        <span id="insightsEarned">0</span> insights
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-heart"></i>
+                        <span id="completionRate">0</span>% complete
+                    </div>
+                </div>
+            </div>
+            
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+                <div class="progress-glow"></div>
+            </div>
+            
+            <div class="section-indicators">
+                <div class="indicator pending" data-section="1" title="Core Values">💎</div>
+                <div class="indicator pending" data-section="2" title="Emotional Intelligence">💭</div>
+                <div class="indicator pending" data-section="3" title="Communication">💬</div>
+                <div class="indicator pending" data-section="4" title="Intimacy & Connection">💕</div>
+                <div class="indicator pending" data-section="5" title="Family & Future">👨‍👩‍👧‍👦</div>
+                <div class="indicator pending" data-section="6" title="Lifestyle & Values">🏡</div>
+                <div class="indicator pending" data-section="7" title="Financial Partnership">💰</div>
+                <div class="indicator pending" data-section="8" title="Growth & Support">🌱</div>
+                <div class="indicator pending" data-section="9" title="Challenges & Resilience">💪</div>
+                <div class="indicator pending" data-section="10" title="Marriage Vision">💍</div>
+            </div>
+        </div>
+
+        <!-- Dynamic Sections Container -->
+        <div id="sectionsContainer"></div>
+
+        <!-- Results Container -->
+        <div id="resultsContainer" style="display: none;"></div>
+    </div>
+
+    <!-- Floating Elements -->
+    <button class="fab" onclick="openHelpModal()" title="Need guidance?">
+        <i class="fas fa-question"></i>
+    </button>
+
+    <!-- Modals Container -->
+    <div id="modalsContainer"></div>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/psychology.js"></script>
+    <script src="js/app.js"></script>
+    
+    <!-- Initialize Application -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeApplication();
+        });
+    </script>
+</body>
+</html>
